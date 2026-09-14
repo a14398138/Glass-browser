@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <uses-permission android:name="android.permission.INTERNET"/>
+ <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+ <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+ <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+ <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+ <application android:theme="@style/AppTheme" android:label="Glass Browser 透明窓" android:allowBackup="false" android:usesCleartextTraffic="false" android:supportsRtl="true">
+  <activity android:name=".MainActivity" android:exported="true" android:resizeableActivity="true" android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden" android:windowSoftInputMode="adjustResize">
+   <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+  </activity>
+ <activity android:name=".FullscreenActivity" android:exported="false" android:theme="@style/FullscreenTheme" android:taskAffinity="dev.glass.browser.fullscreen" android:resizeableActivity="false" android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden" android:windowSoftInputMode="adjustResize"/>
+  <service android:name=".BrowserService" android:exported="false" android:foregroundServiceType="specialUse">
+   <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-started interactive transparent browser overlay, visible until explicitly closed, for reading web text over another app."/>
+  </service>
+ </application>
+</manifest>
